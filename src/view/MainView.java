@@ -1,6 +1,4 @@
-package gui;/**
- * Created by jeppe on 20-11-2017.
- */
+package view;
 
 import javafx.application.Application;
 import javafx.stage.Stage;
