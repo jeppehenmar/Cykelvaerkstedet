@@ -4,7 +4,7 @@ package models;
  * Created by leonemborg on 20/11/2017.
  */
 public class Product {
-    //Fields and constructors
+    //Fields and constructor
     private int productID;
     private String productNumber;
     private String eanNumber;
