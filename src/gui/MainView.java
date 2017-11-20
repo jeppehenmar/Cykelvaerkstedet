@@ -1,7 +1,18 @@
-package gui;
-
-/**
+package gui;/**
  * Created by jeppe on 20-11-2017.
  */
-public class MainView {
+
+import javafx.application.Application;
+import javafx.stage.Stage;
+
+public class MainView extends Application {
+
+    public static void main(String[] args) {
+        launch(args);
+    }
+
+    @Override
+    public void start(Stage primaryStage) {
+
+    }
 }
