@@ -44,7 +44,7 @@
     -fx-text-fill: #ECEFF1;
     -fx-font-weight: 900;
     -fx-font-family: NotoSans;
-    -fx-pref-width: 140;
+    -fx-pref-width: 160;
     -fx-pref-height: 40;
     -fx-effect: dropshadow(three-pass-box, #4f5b62, 1, 0, -1, 1);
 }
