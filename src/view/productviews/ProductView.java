@@ -87,7 +87,7 @@ public class ProductView {
         allHbox.getChildren().addAll(listVbox, buttonVbox);
         allHbox.setAlignment(Pos.TOP_CENTER);
 
-        productScene = new Scene(allHbox, 1200, 500);
+        productScene = new Scene(allHbox, 1240, 500);
         productScene.getStylesheets().add("styling/default.css");
 
         productWindow = new Stage();
