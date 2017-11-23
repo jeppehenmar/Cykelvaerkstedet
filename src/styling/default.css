@@ -1,0 +1,97 @@
+.root {
+    -fx-background-color: #ECEFF1;
+}
+
+.button{
+    -fx-border-radius: 0 0 0 0;
+    -fx-background-radius: 0 0 0 0;
+    -fx-border-color: transparent;
+}
+
+.text-field{
+    -fx-border-radius: 0 0 0 0;
+    -fx-background-radius: 0 0 0 0;
+    -fx-border-color: transparent;
+}
+
+.text-field:focused{
+    -fx-focus-color: #f4511e;
+    -fx-faint-focus-color: transparent;
+}
+
+#menu-button{
+    -fx-background-color: #f4511e;
+    -fx-text-fill: #ECEFF1;
+    -fx-font-weight: 900;
+    -fx-font-size: 22;
+    -fx-effect: dropshadow(three-pass-box, #4f5b62, 1, 0, -1, 1);
+    -fx-pref-width: 200;
+    -fx-pref-height: 75;
+    -fx-font-family: NotoSans;
+}
+
+#menu-button:hover{
+    -fx-background-color: #c63f17;
+}
+
+#menu-button:pressed{
+    -fx-background-color: #ff844c;
+    -fx-effect: dropshadow(three-pass-box, #4f5b62, 0, 0, 0, 0);
+}
+
+#lager-button{
+    -fx-background-color: #f4511e;
+    -fx-text-fill: #ECEFF1;
+    -fx-font-weight: 900;
+    -fx-font-family: NotoSans;
+    -fx-pref-width: 140;
+    -fx-pref-height: 40;
+    -fx-effect: dropshadow(three-pass-box, #4f5b62, 1, 0, -1, 1);
+}
+
+#lager-button:hover{
+    -fx-background-color: #c63f17;
+}
+
+#lager-button:pressed{
+    -fx-background-color: #ff844c;
+    -fx-effect: dropshadow(three-pass-box, #4f5b62, 0, 0, 0, 0);
+}
+
+#searchbox{
+    -fx-pref-width: 800;
+}
+
+
+#filter-dropdown{
+    -fx-pref-width: 200;
+    -fx-border-radius: 0 0 0 0;
+    -fx-background-radius: 0 0 0 0;
+    -fx-border-color: transparent;
+    -fx-background-color: white;
+}
+
+/***************************************
+    |                               |
+    |           TABLEVIEW           |
+    |                               |
+****************************************/
+
+.table-view{
+    -fx-pref-width: 1000;
+}
+
+.table-view:focused{
+    -fx-focus-color: #f4511e;
+    -fx-faint-focus-color: transparent;
+}
+
+.table-view .column-header{
+    -fx-background-color: #f4511e;
+    -fx-background-radius: 0 0 0 0;
+}
+
+.table-view .column-header-background .label{
+    -fx-font-family: NotoSans;
+    -fx-text-fill: #ECEFF1;
+}
