@@ -27,9 +27,9 @@ import java.util.List;
 public class ProductView {
     public static Stage productWindow;
     public static Scene productScene;
+    public static TableView productTableView;
 
     public static void productScene(GUIController controller){
-        //Constants.fillProductList();
         List<Product> productList = controller.getProductList();
         //Hbox for search and dropdown
         HBox searchHbox = new HBox(15);
@@ -48,7 +48,7 @@ public class ProductView {
         //Creating observableArrayList for TableView
         ObservableList<Product> productObservableList = FXCollections.observableArrayList(productList);
         //Creating TableView for products
-        TableView productTableView = new TableView();
+        productTableView = new TableView();
         productTableView.itemsProperty().setValue(productObservableList);
         //Creating columns for productListView
         TableColumn<Product, Integer> productIdColumn = new TableColumn<>("ID");
@@ -76,6 +76,16 @@ public class ProductView {
         //Adding searchHbox and tableview
         listVbox.getChildren().addAll(searchHbox, productTableView);
 
+        //Vbox for right side delete button
+        VBox deleteButtonVbox = new VBox(10);
+        deleteButtonVbox.setPadding(new Insets(238, 0, 0, 0));
+        //Creating button
+        Button deleteButton = new Button("Slet");
+        //Setting ID for button
+        deleteButton.setId("warning-button");
+        //Add button to Vbox
+        deleteButtonVbox.getChildren().addAll(deleteButton);
+
         //Vbox for right side buttons
         VBox buttonVbox = new VBox(15);
         buttonVbox.setPadding(new Insets(40, 0, 0, 0));
@@ -84,11 +94,12 @@ public class ProductView {
         Button detailsButton = new Button("DETALJER");
         //Specifying setOnAction for buttons
         productButton.setOnAction(e -> CreateProductView.createProductScene());
+        detailsButton.setOnAction(event -> UpdateProductView.updateProductScene((Product)productTableView.getSelectionModel().getSelectedItem()));
         //Setting ID for buttons
         productButton.setId("lager-button");
         detailsButton.setId("lager-button");
         //Adding buttons to vbox
-        buttonVbox.getChildren().addAll(productButton, detailsButton);
+        buttonVbox.getChildren().addAll(productButton, detailsButton, deleteButtonVbox);
 
         //Hbox for everything
         HBox allHbox = new HBox(15);

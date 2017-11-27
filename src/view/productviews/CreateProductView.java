@@ -78,7 +78,7 @@ public class CreateProductView {
         Button cancelButton = new Button("ANNULLÉR");
         //Setting id's for buttons
         saveButton.setId("lager-button");
-        cancelButton.setId("lager-button");
+        cancelButton.setId("warning-button");
         //Specifying setOnAction for buttons
         cancelButton.setOnAction(e -> createProductWindow.close());
         //Adding buttons to vbox

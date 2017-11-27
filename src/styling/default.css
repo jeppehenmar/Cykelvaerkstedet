@@ -19,6 +19,26 @@
     -fx-faint-focus-color: transparent;
 }
 
+.check-box .box{
+    -fx-background-color: white;
+    -fx-border-radius: 0 0 0 0;
+    -fx-background-radius: 0 0 0 0;
+    -fx-border-color: #f4511e;
+}
+
+.check-box:focused .box{
+    fx-focus-color: transparent;
+    fx-faint-focus-color: transparent;
+}
+
+.check-box:selected .mark{
+    -fx-background-color: #ECEFF1;
+}
+
+.check-box:selected .box{
+    -fx-background-color: #f4511e;
+}
+
 #menu-button{
     -fx-background-color: #00acc1;
     -fx-text-fill: #ECEFF1;
@@ -54,6 +74,25 @@
 }
 
 #lager-button:pressed{
+    -fx-background-color: #ff844c;
+    -fx-effect: dropshadow(three-pass-box, #4f5b62, 0, 0, 0, 0);
+}
+
+#warning-button{
+    -fx-background-color: #f4511e;
+    -fx-text-fill: #ECEFF1;
+    -fx-font-weight: 900;
+    -fx-font-family: NotoSans;
+    -fx-pref-width: 160;
+    -fx-pref-height: 40;
+    -fx-effect: dropshadow(three-pass-box, #4f5b62, 1, 0, -1, 1);
+}
+
+#warning-button:hover{
+    -fx-background-color: #b91400;
+}
+
+#warning-button:pressed{
     -fx-background-color: #ff844c;
     -fx-effect: dropshadow(three-pass-box, #4f5b62, 0, 0, 0, 0);
 }
