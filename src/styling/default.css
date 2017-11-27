@@ -15,12 +15,12 @@
 }
 
 .text-field:focused{
-    -fx-focus-color: #f4511e;
+    -fx-focus-color: #00acc1;
     -fx-faint-focus-color: transparent;
 }
 
 #menu-button{
-    -fx-background-color: #f4511e;
+    -fx-background-color: #00acc1;
     -fx-text-fill: #ECEFF1;
     -fx-font-weight: 900;
     -fx-font-size: 22;
@@ -31,7 +31,7 @@
 }
 
 #menu-button:hover{
-    -fx-background-color: #c63f17;
+    -fx-background-color: #f4511e;
 }
 
 #menu-button:pressed{
@@ -40,7 +40,7 @@
 }
 
 #lager-button{
-    -fx-background-color: #f4511e;
+    -fx-background-color: #00acc1;
     -fx-text-fill: #ECEFF1;
     -fx-font-weight: 900;
     -fx-font-family: NotoSans;
@@ -50,7 +50,7 @@
 }
 
 #lager-button:hover{
-    -fx-background-color: #c63f17;
+    -fx-background-color: #f4511e;
 }
 
 #lager-button:pressed{
@@ -71,6 +71,12 @@
     -fx-background-color: white;
 }
 
+#product-label{
+    -fx-font-family: NotoSans;
+    -fx-font-weight: 600;
+    -fx-font-size: 16;
+}
+
 /***************************************
     |                               |
     |           TABLEVIEW           |
@@ -82,12 +88,12 @@
 }
 
 .table-view:focused{
-    -fx-focus-color: #f4511e;
+    -fx-focus-color: #00acc1;
     -fx-faint-focus-color: transparent;
 }
 
 .table-view .column-header{
-    -fx-background-color: #f4511e;
+    -fx-background-color: #00acc1;
     -fx-background-radius: 0 0 0 0;
 }
 

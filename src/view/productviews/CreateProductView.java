@@ -8,6 +8,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -26,14 +27,18 @@ public class CreateProductView {
         TextField productNumberTextField = new TextField();
         //Setting prompt text for fields
         productIdTextField.setPromptText("Produkt ID");
-        productNameTextField.setPromptText("Produkt navn");
-        productNumberTextField.setPromptText("Produkt nummer");
+        productNameTextField.setPromptText("Produktnavn");
+        productNumberTextField.setPromptText("Produktnummer");
         //Creating labels for left textfields
-        Label productIdLabel = new Label("Produkt ID:");
-        Label productNameLabel = new Label("Produktnummer:");
-        Label productNumberLabel = new Label("Produktnavn:");
+        Text productIdText = new Text("Produkt ID:");
+        Text productNameText = new Text("Produktnavn:");
+        Text productNumberText = new Text("Produktnummer:");
+        //Setting id for labels
+        productIdText.setId("product-label");
+        productNameText.setId("product-label");
+        productNumberText.setId("product-label");
         //Adding left textfields and labels to left Vbox
-        leftFieldsVbox.getChildren().addAll(productIdLabel, productIdTextField, productNameLabel, productNameTextField, productNumberLabel, productNumberTextField);
+        leftFieldsVbox.getChildren().addAll(productIdText, productIdTextField, productNameText, productNameTextField, productNumberText, productNumberTextField);
 
         VBox rightFieldsVbox = new VBox(10);
         //Creating right textfields
@@ -45,11 +50,15 @@ public class CreateProductView {
         wholeSaleTextField.setPromptText("Indkøbspris");
         retailPriceTextField.setPromptText("Salgspris");
         //Creating labels for right textfields
-        Label eanNumberLabel = new Label("EAN-nummer:");
-        Label wholeSaleLabel = new Label("Indkøbspris:");
-        Label retailPriceLabel = new Label("Salgspris:");
+        Text eanNumberText = new Text("EAN-nummer:");
+        Text wholeSaleText = new Text("Indkøbspris:");
+        Text retailPriceText = new Text("Salgspris:");
+        //Setting id for labels
+        eanNumberText.setId("product-label");
+        wholeSaleText.setId("product-label");
+        retailPriceText.setId("product-label");
         //Adding right textfields and labels to right Vbox
-        rightFieldsVbox.getChildren().addAll(eanNumberLabel, eanNumberTextField, wholeSaleLabel, wholeSaleTextField, retailPriceLabel, retailPriceTextField);
+        rightFieldsVbox.getChildren().addAll(eanNumberText, eanNumberTextField, wholeSaleText, wholeSaleTextField, retailPriceText, retailPriceTextField);
 
         //Creating Hbox for all textfields
         HBox textFieldsHbox = new HBox(15);

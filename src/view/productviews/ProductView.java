@@ -1,5 +1,6 @@
 package view.productviews;
 
+import controllers.GUIController;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -13,8 +14,12 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import models.Constants;
 import models.Product;
 import view.MainView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by jeppe on 20-11-2017.
@@ -23,8 +28,9 @@ public class ProductView {
     public static Stage productWindow;
     public static Scene productScene;
 
-    public static void productScene(){
-
+    public static void productScene(GUIController controller){
+        //Constants.fillProductList();
+        List<Product> productList = controller.getProductList();
         //Hbox for search and dropdown
         HBox searchHbox = new HBox(15);
         //Setting up searchfield
@@ -39,8 +45,11 @@ public class ProductView {
 
         //Vbox for list, search and dropdown
         VBox listVbox = new VBox(15);
+        //Creating observableArrayList for TableView
+        ObservableList<Product> productObservableList = FXCollections.observableArrayList(productList);
         //Creating TableView for products
-        TableView<Product> productTableView = new TableView<>();
+        TableView productTableView = new TableView();
+        productTableView.itemsProperty().setValue(productObservableList);
         //Creating columns for productListView
         TableColumn<Product, Integer> productIdColumn = new TableColumn<>("ID");
         TableColumn<Product, String> productNameColumn = new TableColumn<>("Produktnavn");
@@ -56,10 +65,10 @@ public class ProductView {
         wholeSaleColumn.setCellValueFactory(e -> new SimpleObjectProperty<>(e.getValue().getWholeSale()));
         retailPriceColumn.setCellValueFactory(e -> new SimpleObjectProperty<>(e.getValue().getRetailPrice()));
         //Setting width of columns
-        productIdColumn.prefWidthProperty().bind(productTableView.widthProperty().multiply(0.10));
-        productNameColumn.prefWidthProperty().bind(productTableView.widthProperty().multiply(0.25));
-        productNumberColumn.prefWidthProperty().bind(productTableView.widthProperty().multiply(0.20));
-        eanNumberColumn.prefWidthProperty().bind(productTableView.widthProperty().multiply(0.25));
+        productIdColumn.prefWidthProperty().bind(productTableView.widthProperty().multiply(0.05));
+        productNameColumn.prefWidthProperty().bind(productTableView.widthProperty().multiply(0.30));
+        productNumberColumn.prefWidthProperty().bind(productTableView.widthProperty().multiply(0.30));
+        eanNumberColumn.prefWidthProperty().bind(productTableView.widthProperty().multiply(0.15));
         wholeSaleColumn.prefWidthProperty().bind(productTableView.widthProperty().multiply(0.10));
         retailPriceColumn.prefWidthProperty().bind(productTableView.widthProperty().multiply(0.10));
         //Adding columns to tableview

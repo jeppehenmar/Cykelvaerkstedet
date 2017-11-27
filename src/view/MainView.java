@@ -38,7 +38,7 @@ public class MainView extends Application {
         //Buttons for buttonVbox
         Button lagerBtn = new Button("LAGER");
         lagerBtn.setId("menu-button");
-        lagerBtn.setOnAction(event -> ProductView.productScene());
+        lagerBtn.setOnAction(event -> ProductView.productScene(controller));
         Button kasseBtn = new Button("KASSE");
         kasseBtn.setId("menu-button");
         Button ordreBtn = new Button("ORDRER");
