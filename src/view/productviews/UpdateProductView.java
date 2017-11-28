@@ -30,6 +30,10 @@ public class UpdateProductView {
         TextField productIdTextField = new TextField(Integer.toString(product.getProductID()));
         TextField productNameTextField = new TextField(product.getProductName());
         TextField productNumberTextField = new TextField(product.getProductNumber());
+        //Setting editable for texfields
+        productIdTextField.setEditable(false);
+        productNameTextField.setEditable(false);
+        productNumberTextField.setEditable(false);
         //Setting prompt text for fields
         productIdTextField.setPromptText("Produkt ID");
         productNameTextField.setPromptText("Produktnavn");
@@ -49,6 +53,10 @@ public class UpdateProductView {
         TextField eanNumberTextField = new TextField(product.getEanNumber());
         TextField wholeSaleTextField = new TextField(Double.toString(product.getWholeSale()));
         TextField retailPriceTextField = new TextField(Double.toString(product.getRetailPrice()));
+        //Setting editable for texfields
+        eanNumberTextField.setEditable(false);
+        wholeSaleTextField.setEditable(false);
+        retailPriceTextField.setEditable(false);
         //Setting prompt text for fields
         eanNumberTextField.setPromptText("EAN-nummer");
         wholeSaleTextField.setPromptText("Indkøbspris");
@@ -76,6 +84,9 @@ public class UpdateProductView {
         editHbox.setPadding(new Insets(0, 0, 0, 55));
         //Creating button
         CheckBox editCheckBox = new CheckBox("Lås");
+        //Setting checkbox to checked, with .fire()
+        editCheckBox.fire();
+        //Adding listener to checkbox, to set editable for textfields
         editCheckBox.selectedProperty().addListener(new ChangeListener<Boolean>() {
             @Override
             public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
