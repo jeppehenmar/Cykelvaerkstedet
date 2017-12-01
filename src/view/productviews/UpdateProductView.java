@@ -116,7 +116,7 @@ public class UpdateProductView {
         saveButton.setOnAction(e -> {
            product.setProductID(Integer.parseInt(productIdTextField.getText()));
            product.setProductName(productNameTextField.getText());
-           product.setProductNumber(productNumberText.getText());
+           product.setProductNumber(productNumberTextField.getText());
            product.setEanNumber(eanNumberTextField.getText());
            product.setWholeSale(Double.parseDouble(wholeSaleTextField.getText()));
            product.setRetailPrice(Double.parseDouble(retailPriceTextField.getText()));

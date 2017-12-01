@@ -12,8 +12,9 @@ public class Product {
     private double wholeSale;
     private double retailPrice;
     private boolean isActive;
+    private int inStock;
 
-    public Product(int productID, String productNumber, String eanNumber, String productName, double wholeSale, double retailPrice, boolean isActive) {
+    public Product(int productID, String productNumber, String eanNumber, String productName, double wholeSale, double retailPrice, boolean isActive, int inStock) {
         this.productID = productID;
         this.productNumber = productNumber;
         this.eanNumber = eanNumber;
@@ -21,6 +22,7 @@ public class Product {
         this.wholeSale = wholeSale;
         this.retailPrice = retailPrice;
         this.isActive = isActive;
+        this.inStock = inStock;
     }
 
 
@@ -72,5 +74,13 @@ public class Product {
     }
     public void setActive(boolean active) {
         isActive = active;
+    }
+
+    public int getInStock() {
+        return inStock;
+    }
+
+    public void setInStock(int inStock) {
+        this.inStock = inStock;
     }
 }

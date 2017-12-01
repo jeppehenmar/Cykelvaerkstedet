@@ -12,6 +12,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import models.Constants;
@@ -57,6 +58,7 @@ public class ProductView {
         TableColumn<Product, String> eanNumberColumn = new TableColumn<>("EAN-nummer");
         TableColumn<Product, Double> wholeSaleColumn = new TableColumn<>("Kostpris");
         TableColumn<Product, Double> retailPriceColumn = new TableColumn<>("Udsalgspris");
+        TableColumn<Product, Integer> inStockColumn = new TableColumn<>("Beholdning");
         //Setting cell values to columns
         productIdColumn.setCellValueFactory(e -> new SimpleObjectProperty<>(e.getValue().getProductID()));
         productNameColumn.setCellValueFactory(e -> new SimpleStringProperty(e.getValue().getProductName()));
@@ -64,23 +66,66 @@ public class ProductView {
         eanNumberColumn.setCellValueFactory(e -> new SimpleStringProperty(e.getValue().getEanNumber()));
         wholeSaleColumn.setCellValueFactory(e -> new SimpleObjectProperty<>(e.getValue().getWholeSale()));
         retailPriceColumn.setCellValueFactory(e -> new SimpleObjectProperty<>(e.getValue().getRetailPrice()));
+        inStockColumn.setCellValueFactory(e -> new SimpleObjectProperty<>(e.getValue().getInStock()));
         //Setting width of columns
         productIdColumn.prefWidthProperty().bind(productTableView.widthProperty().multiply(0.05));
-        productNameColumn.prefWidthProperty().bind(productTableView.widthProperty().multiply(0.30));
-        productNumberColumn.prefWidthProperty().bind(productTableView.widthProperty().multiply(0.30));
+        productNameColumn.prefWidthProperty().bind(productTableView.widthProperty().multiply(0.25));
+        productNumberColumn.prefWidthProperty().bind(productTableView.widthProperty().multiply(0.25));
         eanNumberColumn.prefWidthProperty().bind(productTableView.widthProperty().multiply(0.15));
-        wholeSaleColumn.prefWidthProperty().bind(productTableView.widthProperty().multiply(0.10));
-        retailPriceColumn.prefWidthProperty().bind(productTableView.widthProperty().multiply(0.10));
+        wholeSaleColumn.prefWidthProperty().bind(productTableView.widthProperty().multiply(0.1));
+        retailPriceColumn.prefWidthProperty().bind(productTableView.widthProperty().multiply(0.1));
+        inStockColumn.prefWidthProperty().bind(productTableView.widthProperty().multiply(0.098));
+        //Setting text alignment for selected columns
+        productIdColumn.setStyle("-fx-alignment: CENTER");
+        //eanNumberColumn.setStyle("-fx-alignment: CENTER");
+        wholeSaleColumn.setStyle("-fx-alignment: CENTER");
+        retailPriceColumn.setStyle("-fx-alignment: CENTER");
+        inStockColumn.setStyle("-fx-alignment: CENTER");
         //Adding columns to tableview
-        productTableView.getColumns().addAll(productIdColumn, productNameColumn, productNumberColumn, eanNumberColumn, wholeSaleColumn, retailPriceColumn);
+        productTableView.getColumns().addAll(productIdColumn, productNameColumn, productNumberColumn, eanNumberColumn, wholeSaleColumn, retailPriceColumn, inStockColumn);
         //Adding searchHbox and tableview
         listVbox.getChildren().addAll(searchHbox, productTableView);
 
         //Vbox for right side delete button
         VBox deleteButtonVbox = new VBox(10);
-        deleteButtonVbox.setPadding(new Insets(238, 0, 0, 0));
+        deleteButtonVbox.setPadding(new Insets(250, 0, 0, 0));
         //Creating button
-        Button deleteButton = new Button("Slet");
+        Button deleteButton = new Button("SLET");
+        //Specifying setOnAction for deleteButton
+        deleteButton.setOnAction(e -> {
+            Stage popUpWindow = new Stage();
+            VBox allVbox = new VBox(10);
+            allVbox.setPadding(new Insets(0, 0, 25, 0));
+            HBox textHbox = new HBox(10);
+            textHbox.setAlignment(Pos.CENTER);
+            Text popUpText = new Text("Vil du slette det valgte produkt permanent?");
+            popUpText.setId("popup-text");
+            textHbox.getChildren().addAll(popUpText);
+            HBox buttonHbox = new HBox(10);
+            buttonHbox.setAlignment(Pos.CENTER);
+            Button yesButton = new Button("JA");
+            yesButton.setId("lager-button");
+            yesButton.setOnAction(event -> {
+                controller.deleteProduct((Product)productTableView.getSelectionModel().getSelectedItem());
+                productObservableList.remove(productTableView.getSelectionModel().getSelectedItem());
+                productTableView.refresh();
+                popUpWindow.close();
+            });
+            Button noButton = new Button("NEJ");
+            noButton.setId("lager-button");
+            noButton.setOnAction(event -> popUpWindow.close());
+            buttonHbox.getChildren().addAll(yesButton, noButton);
+            allVbox.getChildren().addAll(textHbox, buttonHbox);
+            allVbox.setAlignment(Pos.CENTER);
+            Scene popUpScene = new Scene(allVbox, 400, 155);
+            popUpScene.getStylesheets().add("styling/default.css");
+            popUpWindow.initModality(Modality.APPLICATION_MODAL);
+            popUpWindow.initOwner(productWindow);
+            popUpWindow.setScene(popUpScene);
+            popUpWindow.setTitle("placeholder");
+            popUpWindow.show();
+
+        });
         //Setting ID for button
         deleteButton.setId("warning-button");
         //Add button to Vbox
